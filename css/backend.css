@@ -1,0 +1,64 @@
+/**
+ *  @module         multiplepage
+ *  @version        see info.php of this module
+ *  @authors        Robert Joseph and others, cms-lab
+ *  @copyright      2009-2010 Robert Joseph and others
+ *  @copyright      2010-2014 cms-lab 
+ *  @license        GNU General Public License
+ *  @license terms  see info.php of this module
+ *
+ */
+ 
+ul.listcreated li { 
+	color: green;
+	}
+span.red  { 
+	color: red; 
+	}
+  
+table.mp_row      { 
+    background: none repeat scroll 0 0 #ddd;
+    width: 100%;
+    margin-top:20px;
+   }
+  
+    
+table.mp_row tr td      { 
+    padding: 4px 2px;
+	}
+	
+thead	{ 
+    background: #345707;
+    color: #fff;
+    font-weight: bold;
+    height: 25px;
+	}
+  
+input.mp_menutitle    { 
+width:240px;
+}  
+  
+input.mp_pagetitle    { 
+width:280px;
+}  
+
+select.mp_module    { 
+width:120px;
+}
+
+select.mp_parent    { 
+width:98px;
+}
+
+select.mp_visibility    { 
+width:90px;
+}
+  
+tfoot 	{
+    background: #ddd;
+    height: 20px;
+	}	
+  
+button.button_save    { 
+    margin-top: 16px;
+}

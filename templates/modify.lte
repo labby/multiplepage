@@ -1,0 +1,57 @@
+{% autoescape false %}
+		<form id="multiple_page" action='{{ self }}' method='post'>
+		<table border='0' class='mp_row'>
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>{{ TEXT.MENU_TITLE }}</td>
+				<td>{{ TEXT.PAGE_TITLE }}</td>
+				<td>{{ TEXT.TYPE }}</td>
+				<td>{{ TEXT.PARENT }}</td>
+				<td>{{ TEXT.VISIBILITY }}</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for menu in all_menus %}
+			<tr>
+				<td align='center'><small>{{ menu.menu_num }}</small></td>
+				<td><input class='mp_menutitle' type='text' name='menu_title[]' value='{{ menu.menutitlevalue }}'></td>
+				<td><input class='mp_pagetitle'type='text' name='page_title[]' value='{{ menu.pagetitlevalue }}'></td>
+				<td>
+					<select class='mp_module' name='type[]'>
+						{% for module in typeoptions %}
+						<option value="{{ module.directory }}" {{ module.selected }} >{{ module.name }}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>
+					<select class='mp_parent' name=parent[]>
+						<option value='0'>none</option>
+						{% for page in parentoptions %}
+						<option value={{ page.page_id }}>{{ page.menu_title_prefix }}{{ page.page_title }}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>
+					<select class='mp_visibility' name='visibility[]'>
+						<option value='public'>public</option>
+						<option value='hidden'>hidden</option>					
+						<option value='private'>private</option>				
+					</select>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot><td colspan='6'></td></tfoot>
+		
+		<table width='100%'>
+			<tr>
+				<td></td>
+				<td align='right'>
+	 			<button name='button' type='submit' class='button_save'>&nbsp;{{ TEXT.SAVE }}</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+<hr size="1" />		
+{% endautoescape %}
