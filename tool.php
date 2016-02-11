@@ -5,7 +5,7 @@
  *  @version        see info.php of this module
  *  @authors        Robert Joseph and others, cms-lab
  *  @copyright      2009-2010 Robert Joseph and others
- *  @copyright      2010-2014 cms-lab 
+ *  @copyright      2010-2016 cms-lab 
  *  @license        GNU General Public License
  *  @license terms  see info.php of this module
  *
@@ -49,7 +49,7 @@ require( dirname(__FILE__)."/register_parser.php" );
 if (isset($_POST['button'])) {
 
 	// Include the functions file
-	require_once(LEPTON_PATH.'/framework/functions.php');
+	require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 	$menutitlearr = $_POST['menu_title'];
 	$pagetitlearr = $_POST['page_title'];
