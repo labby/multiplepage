@@ -34,7 +34,7 @@ if (defined('LEPTON_PATH')) {
 $module_directory 	= 'multiplepage';
 $module_name 		= 'Multiple Page Creator';
 $module_function 	= 'tool';
-$module_version 	= '1.0';
+$module_version 	= '1.1.0';
 $module_platform 	= '2.x';
 $module_author 		= 'Robert Joseph and others, cms-lab';
 $module_license = 	'GNU General Public License';
