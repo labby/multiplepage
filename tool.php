@@ -5,7 +5,7 @@
  *  @version        see info.php of this module
  *  @authors        Robert Joseph and others, cms-lab
  *  @copyright      2009-2010 Robert Joseph and others
- *  @copyright      2010-2016 cms-lab 
+ *  @copyright      2010-2017 cms-lab 
  *  @license        GNU General Public License
  *  @license terms  see info.php of this module
  *
@@ -66,10 +66,9 @@ if (isset($_POST['button'])) {
 		$module = $typearr[$i];
 		$parent = $parentarr[$i];
 		$visibility = $visibilityarr[$i];
-		$admin_groups = '';
-		$viewing_groups = '';
-		$admin_groups[0] = '1';
-		$viewing_groups[0] = '1';
+
+		$admin_groups = array('1');
+		$viewing_groups = array('1');
 
 		if($menu_title != '' and substr($menu_title,0,1)!='.') {
 			if ($parent!=0) {
@@ -107,17 +106,17 @@ if (isset($_POST['button'])) {
 			
 			// Work-out what the link and page filename should be
 			if($parent == '0') {
-				$link = '/'.page_filename($menu_title);
-				$filename = LEPTON_PATH.PAGES_DIRECTORY.'/'.page_filename($menu_title).'.php';
+				$link = '/'.save_filename($menu_title);
+				$filename = LEPTON_PATH.PAGES_DIRECTORY.'/'.save_filename($menu_title).'.php';
 			} else {
 				$parent_section = '';
 				$parent_titles = array_reverse(get_parent_titles($parent));
 				foreach($parent_titles AS $parent_title) {
-					$parent_section .= page_filename($parent_title).'/';
+					$parent_section .= save_filename($parent_title).'/';
 				}
 				if($parent_section == '/') { $parent_section = ''; }
-				$link = '/'.$parent_section.page_filename($menu_title);
-				$filename = LEPTON_PATH.PAGES_DIRECTORY.'/'.$parent_section.page_filename($menu_title).'.php';
+				$link = '/'.$parent_section.save_filename($menu_title);
+				$filename = LEPTON_PATH.PAGES_DIRECTORY.'/'.$parent_section.save_filename($menu_title).'.php';
 				make_dir(LEPTON_PATH.PAGES_DIRECTORY.'/'.$parent_section);
 			}
 			
@@ -266,7 +265,7 @@ $module_permissions = $_SESSION['MODULE_PERMISSIONS'];
 
 $result = $database->query("SELECT * FROM ".TABLE_PREFIX."addons WHERE type = 'module' AND function = 'page' order by name");
 if($result->numRows() > 0) {
-while($module = $result->fetchRow( MYSQL_ASSOC )) {
+while($module = $result->fetchRow()) {
   // Check if user is allowed to use this module
   if(!is_numeric(array_search($module['directory'], $module_permissions))) {
    $module['selected'] = ($module['directory'] == 'wysiwyg') ? "selected='selected'": "";
@@ -302,7 +301,7 @@ function parent_list($parent) {
  $options = array();
  $query = "SELECT * FROM ".TABLE_PREFIX."pages WHERE parent = '$parent' ORDER BY position ASC";
  $get_pages = $database->query($query);
- while($page = $get_pages->fetchRow( MYSQL_ASSOC )) {
+ while($page = $get_pages->fetchRow()) {
   if($admin->page_is_visible($page)==false)
    continue;
   // If the current page cannot be parent, then its children neither

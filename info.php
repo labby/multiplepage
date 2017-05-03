@@ -5,7 +5,7 @@
  *  @version        see info.php of this module
  *  @authors        Robert Joseph and others, cms-lab
  *  @copyright      2009-2010 Robert Joseph and others
- *  @copyright      2010-2016 cms-lab 
+ *  @copyright      2010-2017 cms-lab 
  *  @license        GNU General Public License
  *  @license terms  see info.php of this module
  *
@@ -34,8 +34,8 @@ if (defined('LEPTON_PATH')) {
 $module_directory 	= 'multiplepage';
 $module_name 		= 'Multiple Page Creator';
 $module_function 	= 'tool';
-$module_version 	= '1.1.0';
-$module_platform 	= '2.x';
+$module_version 	= '1.1.1';
+$module_platform 	= '2.3';
 $module_author 		= 'Robert Joseph and others, cms-lab';
 $module_license = 	'GNU General Public License';
 $module_license_terms = '-';
